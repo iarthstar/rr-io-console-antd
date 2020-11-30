@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rjsf/antd": "^2.4.0",
+    "@rjsf/core": "^2.4.0",
+    "antd": "^4.8.5",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-scripts": "2.1.1"
