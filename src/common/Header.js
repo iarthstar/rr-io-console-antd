@@ -41,7 +41,7 @@ const Header = (props) => {
             onClick: toggle,
           })}
         </Layout.Header>
-        <Layout.Content
+        {/* <Layout.Content
           className="site-layout-background"
           style={{
             margin: '24px 16px',
@@ -49,8 +49,8 @@ const Header = (props) => {
             minHeight: 280,
           }}
         >
-          {children}
-        </Layout.Content>
+      </Layout.Content> */}
+        {children}
       </Layout>
     </Layout>
   );

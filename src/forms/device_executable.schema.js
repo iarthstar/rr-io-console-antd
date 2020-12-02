@@ -1,3 +1,5 @@
+import Radio from "../common/form/widgets/Radio";
+
 export const schema = {
   "type": "object",
   "properties": {
@@ -17,9 +19,6 @@ export const schema = {
       "default": "Build",
       "title": "Executable type"
     }
-
-
-
   },
   "dependencies": {
     "executable_type": {
@@ -74,4 +73,14 @@ export const schema = {
       ]
     }
   }
-}
+};
+
+export const uiSchema = {
+  "executable_type": {
+    "ui:widget": "radio"
+  }
+};
+
+export const widgets = {
+  "RadioWidget": Radio
+};

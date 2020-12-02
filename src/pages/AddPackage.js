@@ -1,85 +1,60 @@
 import React, { useState } from 'react';
 import { withTheme } from '@rjsf/core';
 import { Theme as AntDTheme } from '@rjsf/antd';
-import classNames from 'classnames';
+import { Row, Col, Card } from 'antd';
 
-import { schema } from "../forms/device_executable.schema";
+import * as initForm from "../forms/device_executable.schema";
+import Editor from '../common/editor';
 
 const Form = withTheme(AntDTheme);
 
-const uiSchema = {
-  executable_type: {
-    "ui:widget": "radio"
-  }
-};
-
-const CustomRadio = function (props) {
-  return (
-    <>
-      <style jsx>{`
-        button:first-child {
-          margin-left: 0rem;
-        }
-
-        button {
-          margin-left: 0.25rem;
-        }
-
-        button:focus {
-          outline-width: 0px;
-        }
-
-        .manifestMultioptionButton {
-          font-weight: normal;
-          cursor: pointer;
-          border-radius: 4px;
-          padding: 5px 16px;
-          vertical-align: middle;
-          background-color: #fafafa;
-          border: 1px solid #000000D9;
-          margin-right: 10px;
-          height: 32px;
-        }
-
-        .selected {
-          color: red;
-          border: 1px solid red;
-        }
-      `}</style>
-      <div>
-        {props.options.enumOptions.map(e => (
-          <button 
-            type="button" 
-            className={classNames({
-              manifestMultioptionButton: true,
-              selected: props.value === e.value
-            })} 
-            onClick={() => props.onChange(e.value)}
-          >
-            {e.label}
-          </button>
-        ))}
-      </div>
-    </>
-  );
-};
-
-const widgets = {
-  RadioWidget: CustomRadio
-};
 
 const AddPackage = () => {
 
   const [formData, setFormData] = useState({});
+  const [form, setForm] = useState(initForm);
+
+  const setFormValues = (key) => (value) => {
+    const temp = { ...form };
+    try {
+      temp[key] = JSON.parse(value);
+      setForm(temp);
+    } catch (err) {
+
+    }
+  };
 
   return (
     <>
-      <Form
-        schema={schema}
-        uiSchema={uiSchema}
-        widgets={widgets}
-        onSubmit={setFormData}
-      />
+      <div style={{ padding: "1rem" }}>
+        <Row gutter={[16, 16]}>
+          <Col span={12}>
+            <Card title="Form" bordered={false} style={{ width: "100%" }}>
+              <Form
+                schema={form.schema}
+                uiSchema={form.uiSchema}
+                widgets={form.widgets}
+                onSubmit={setFormData}
+              />
+            </Card>
+          </Col>
+          <Col span={12}>
+            <Card title="Form Schema" bordered={false} style={{ width: "100%" }}>
+              <Editor
+                code={JSON.stringify(form.schema, null, 2)}
+                setCode={setFormValues('schema')}
+              />
+            </Card>
+            <br />
+            <Card title="Form Schema" bordered={false} style={{ width: "100%" }}>
+              <Editor
+                code={JSON.stringify(form.uiSchema, null, 2)}
+                setCode={setFormValues('uiSchema')}
+              />
+            </Card>
+          </Col>
+        </Row>
+      </div>
     </>
   );
 }
