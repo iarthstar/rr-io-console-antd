@@ -1,4 +1,4 @@
-import Radio from "../common/form/widgets/Radio";
+import WIDGETS from "../common/form/widgets";
 
 export const schema = {
   "type": "object",
@@ -78,9 +78,13 @@ export const schema = {
 export const uiSchema = {
   "executable_type": {
     "ui:widget": "radio"
+  },
+  "is_simulation": {
+    "ui:widget": "checkbox"
   }
 };
 
 export const widgets = {
-  "RadioWidget": Radio
+  "RadioWidget": WIDGETS['RadioGroup'],
+  "CheckboxWidget": WIDGETS['Switch']
 };

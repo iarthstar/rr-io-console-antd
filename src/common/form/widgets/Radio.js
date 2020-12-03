@@ -5,19 +5,11 @@ const Radio = (props) => {
   return (
     <>
       <style jsx>{`
-        button:first-child {
-          margin-left: 0rem;
-        }
-
-        button {
-          margin-left: 0.25rem;
-        }
-
-        button:focus {
+        button.radio_btn:focus {
           outline-width: 0px;
         }
 
-        .manifestMultioptionButton {
+        button.radio_btn {
           font-weight: normal;
           cursor: pointer;
           border-radius: 4px;
@@ -29,17 +21,18 @@ const Radio = (props) => {
           height: 32px;
         }
 
-        .selected {
+        button.selected {
           color: red;
           border: 1px solid red;
         }
+        
       `}</style>
       <div>
         {props.options.enumOptions.map(e => (
           <button
             type="button"
             className={classNames({
-              manifestMultioptionButton: true,
+              radio_btn: true,
               selected: props.value === e.value
             })}
             onClick={() => props.onChange(e.value)}

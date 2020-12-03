@@ -7,7 +7,7 @@ const Editor = (props) => {
   } = props;
   return (
     <MonacoEditor
-      width="90%"
+      width="80%"
       height="600"
       language="json"
       theme="vs-light"
