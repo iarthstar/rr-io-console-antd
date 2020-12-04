@@ -10,7 +10,7 @@ import {
 
 
 const Header = (props) => {
-  const { children } = props;
+  const { children, topbar } = props;
 
   const [collapsed, setCollapsed] = useState(false);
 
@@ -40,6 +40,7 @@ const Header = (props) => {
             className: 'trigger',
             onClick: toggle,
           })}
+          {topbar}
         </Layout.Header>
         {/* <Layout.Content
           className="site-layout-background"
@@ -58,6 +59,9 @@ const Header = (props) => {
 
 const css = (
   <style jsx>{`
+  .nav-btns {
+    float: right;
+  }
     .trigger {
       font-size: 18px;
       line-height: 64px;
