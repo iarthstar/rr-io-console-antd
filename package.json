@@ -9,6 +9,7 @@
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-monaco-editor": "^0.40.0",
+    "react-mosaic-component": "^4.1.1",
     "react-scripts": "2.1.1"
   },
   "scripts": {

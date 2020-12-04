@@ -8,6 +8,7 @@ export const schema = {
       "title": "Executable Name"
     },
     "is_simulation": {
+      "rr_widget": "checkbox",
       "type": "boolean",
       "title": "Simulation",
       "default": false
@@ -18,6 +19,12 @@ export const schema = {
       "enum": ["Build", "Docker", "Default"],
       "default": "Build",
       "title": "Executable type"
+    },
+    "executable_type_select": {
+      "type": "string",
+      "enum": ["Build", "Docker", "Default"],
+      "default": "Build",
+      "title": "Executable type Select"
     }
   },
   "dependencies": {
@@ -79,6 +86,9 @@ export const uiSchema = {
   "executable_type": {
     "ui:widget": "radio"
   },
+  "executable_type_select": {
+    "ui:widget": "select"
+  },
   "is_simulation": {
     "ui:widget": "checkbox"
   }
@@ -86,5 +96,6 @@ export const uiSchema = {
 
 export const widgets = {
   "RadioWidget": WIDGETS['RadioGroup'],
-  "CheckboxWidget": WIDGETS['Switch']
+  "CheckboxWidget": WIDGETS['Switch'],
+  "SelectWidget": WIDGETS['Select']
 };
