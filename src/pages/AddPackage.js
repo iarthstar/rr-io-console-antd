@@ -5,9 +5,7 @@ import { Row, Col, Card, Button } from 'antd';
 
 import * as initForm from "../forms/device_executable.schema";
 
-import Editor from '../common/editor';
-import Radio from '../common/form/widgets/Radio';
-import RadioGroup from '../common/form/widgets/RadioGroup';
+import Editor from '../common/Editor';
 
 import { DownloadOutlined, UploadOutlined } from '@ant-design/icons';
 import Layout from '../common/Layout';
@@ -27,7 +25,7 @@ const AddPackage = () => {
 
   const replacer = (k, v) => {
     if (typeof v === "string" && v.startsWith("WIDGET_", 0)) {
-      return WIDGETS[v.slice(7)] || Radio;
+      return WIDGETS[v.slice(7)] || WIDGETS["Radio"];
     } else {
       return v;
     }
@@ -64,19 +62,15 @@ const AddPackage = () => {
 
   const uploadedFile = (e) => {
     setForm(JSON.parse(e, replacer, 2));
-  }
+  };
 
   const topbar = (
     <div class="nav-btns">
       <Button icon={<UploadOutlined />} onClick={onClickUpload}>Click to Upload Form Schemas</Button>
       <UploadFile callback={uploadedFile} />
-        &nbsp;
-        &nbsp;
-        &nbsp;
+      &nbsp;&nbsp;&nbsp;
       <Button icon={<DownloadOutlined />} onClick={onClickDownload}>Click to Download Form Schemas</Button>
-        &nbsp;
-        &nbsp;
-        &nbsp;
+      &nbsp;&nbsp;&nbsp;
     </div>
   );
 

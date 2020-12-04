@@ -12,7 +12,7 @@ import {
 const Header = (props) => {
   const { children, topbar } = props;
 
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   const toggle = () => setCollapsed(!collapsed);
 
