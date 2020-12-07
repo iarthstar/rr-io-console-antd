@@ -14,6 +14,7 @@ import { downloadFile } from '../utils';
 import WIDGETS from '../common/form/widgets';
 import UploadFile from '../common/utils/UploadFile';
 import { FORM_SCHEMAS_UPLOAD_NODE_ID } from '../constants/Misc';
+import AsyncSelect from '../common/form/widgets/AsyncSelect';
 
 const Form = withTheme(AntDTheme);
 
@@ -89,7 +90,12 @@ const AddPackage = () => {
                 onSubmit={(e) => { console.log(e) }}
               />
             </Card>
+            <br/>
+            <Card title="Development Playground" bordered={false} style={{ width: "100%" }}>
+              <AsyncSelect placeholder="input search text" style={{ width: 200 }} />
+            </Card>
           </Col>
+
           <Col span={12}>
             <Card title="Form Schema" bordered={false} style={{ width: "100%" }}>
               <Editor
