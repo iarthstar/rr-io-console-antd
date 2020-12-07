@@ -93,22 +93,22 @@ const AddPackage = () => {
           <Col span={12}>
             <Card title="Form Schema" bordered={false} style={{ width: "100%" }}>
               <Editor
-                code={JSON.stringify(form.widgets, (k, v) => { return typeof v === 'function' ? "WIDGET_" + v.name : v; }, 2)}
-                setCode={setFormValues('widgets')}
-              />
-            </Card>
-            <br />
-            <Card title="Form Schema" bordered={false} style={{ width: "100%" }}>
-              <Editor
                 code={JSON.stringify(form.schema, null, 2)}
                 setCode={setFormValues('schema')}
               />
             </Card>
             <br />
-            <Card title="Form Schema" bordered={false} style={{ width: "100%" }}>
+            <Card title="UI Schema" bordered={false} style={{ width: "100%" }}>
               <Editor
                 code={JSON.stringify(form.uiSchema, null, 2)}
                 setCode={setFormValues('uiSchema')}
+              />
+            </Card>
+            <br />
+            <Card title="Widgets Schema" bordered={false} style={{ width: "100%" }}>
+              <Editor
+                code={JSON.stringify(form.widgets, (k, v) => { return typeof v === 'function' ? "WIDGET_" + v.name : v; }, 2)}
+                setCode={setFormValues('widgets')}
               />
             </Card>
             <br />

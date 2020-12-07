@@ -2,8 +2,6 @@ import React from 'react';
 import * as Ant from 'antd';
 const Switch = (props) => {
 
-
-
   const {
     onChange,
     value,
@@ -22,7 +20,10 @@ const Switch = (props) => {
               background-color: red !important;
             }
           `}</style>
-          <Ant.Switch checked={value} onChange={(v, e) => { console.log(v, e); onChange(v); }} />
+          <div>
+            <p>{props.label}</p>
+            <Ant.Switch checked={value} onChange={(v, e) => { console.log(v, e); onChange(v); }} />
+          </div>
         </>
       );
     }; break;
@@ -30,11 +31,15 @@ const Switch = (props) => {
     default: return (
       <>
         <style scoped jsx>{`
-          .ant-switch-checked {
+          .ant-checkbox-checked .ant-checkbox-inner {
             background-color: red !important;
+            border-color: red !important;
           }
-        `}</style>
-        <Ant.Checkbox checked={value} onChange={({ target: { checked } }) => { console.log(checked); onChange(checked); }} />
+          `}</style>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <Ant.Checkbox checked={value} onChange={({ target: { checked } }) => { console.log(checked); onChange(checked); }} />
+          <p>&nbsp; {props.label}</p>
+        </div>
       </>
     );
   }
